@@ -3,7 +3,7 @@
 import multiprocessing
 import time
 
-from utils.logger_config import logger
+from simplelog import logger
 
 
 def worker(interval=1):
@@ -39,4 +39,3 @@ def test_log():
 
 if __name__ == "__main__":
     main()
-    pass
