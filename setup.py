@@ -3,14 +3,14 @@ from setuptools import setup, find_packages
 import io
 import re
 
-with io.open('README.md', 'r', encoding='utf8') as f:
+with io.open('README.rst', 'rt', encoding='utf8') as f:
     long_description = f.read()
 
 with io.open("simplelog/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r"__version__\s*=\s*'(.*?)'", f.read()).group(1)
 
-
 print(f"version = {version!r}")
+# print(long_description)
 
 setup(
     name="pysimple-log",
@@ -37,22 +37,20 @@ setup(
     ],
 
     classifiers=[
-
-        # Indicate who your project is intended for
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
-
-        # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: Apache License 2.0',
-
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        "Development Status :: 5 - Production/Stable",
+        "Topic :: System :: Logging",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Implementation :: CPython",
     ],
 )

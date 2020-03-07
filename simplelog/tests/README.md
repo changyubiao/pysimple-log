@@ -1,9 +1,19 @@
 # pysimple-Log 
+
+## 概要
 使用 logging 进行封装了一下 日志格式进行封装,
 同时使用 concurrent_log_handler 来完成多进程安全的写日志
 
 
-# 快速开始   
+## 安装
+Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
+
+```bash 
+pip install  pysimple-log
+```
+
+
+## 快速开始   
 ```python
 
 from simplelog import logger  
@@ -29,7 +39,7 @@ logger.error("this is test")
     logger.exception("this is test")
 
 ```
-运行结果如下:
+结果如下:
 ```
 [2020-03-06 22:53:57 WARNING/33060] test <input>:<module>:9 this is test
 [2020-03-06 22:53:57 INFO/33060] test <input>:<module>:10 this is test
@@ -37,4 +47,8 @@ logger.error("this is test")
 [2020-03-06 22:53:57 ERROR/33060] test <input>:<module>:12 this is test
 NoneType: None
 ```
+
+## 贡献
+如果你对这个项目感兴趣，非常欢迎可以一起维护这个项目。
+如果你在使用的过程发现什么问题，可以联系我。
 

@@ -1,8 +1,17 @@
 .idea/
-*/log/*
+.vscode/
 */__pycache__/*
 build/
 dist/
 venv/
 *.pyc
 *.egg-info/
+*.egg
+env/
+.venv/
+.eggs/
+.tox/
+.pytest_cache/
+# 日志文件
+*.log
+*.lock

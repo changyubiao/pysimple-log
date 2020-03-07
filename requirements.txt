@@ -1,3 +1,1 @@
 concurrent-log-handler==0.9.16
-portalocker==1.5.2
-pywin32==227
