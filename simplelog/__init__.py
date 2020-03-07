@@ -31,7 +31,7 @@ basedir = p.dirname(p.abspath(__file__))
 __author__ = 'Frank.chang'
 __author_email__ = 'frank.chang@lexisnexis.com'
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 logger = Logger().get_logger()
 

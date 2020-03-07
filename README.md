@@ -24,7 +24,7 @@ logger.error("this is test")
 ```
 
 
-# 定制化logger 
+## 定制化logger 
 ```python
     import logging
     from  simplelog import  Logger
