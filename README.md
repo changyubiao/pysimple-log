@@ -9,7 +9,7 @@
 Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
 
 ```bash 
-pip install  pysimple-log
+pip install pysimple-log
 ```
 
 

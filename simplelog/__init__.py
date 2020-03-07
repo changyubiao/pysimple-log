@@ -29,7 +29,7 @@ from simplelog.utils.logger import Logger
 basedir = p.dirname(p.abspath(__file__))
 
 __author__ = 'Frank.chang'
-__email__ = 'frank.chang@lexisnexis.com'
+__author_email__ = 'frank.chang@lexisnexis.com'
 
 __version__ = '0.0.1'
 

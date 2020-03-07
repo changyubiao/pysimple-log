@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import io
 import re
 
-with io.open('README.rst', 'rt', encoding='utf8') as f:
+with io.open('README.md', 'r', encoding='utf8') as f:
     long_description = f.read()
 
 with io.open("simplelog/__init__.py", "rt", encoding="utf8") as f:
@@ -21,6 +21,7 @@ setup(
     include_package_data=True,
     package_dir={"": "simplelog"},
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/changyubiao/pysimple-log.git',
     author='frank',
     author_email='frank.chang@lexisnexis.com',
