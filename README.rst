@@ -11,19 +11,21 @@ pysimple-Log
 ----
 Install and update using `pip`_ :
 
-.. code-block::bash
+.. code-block::python
 
     pip install  pysimple-log
 
 
 快速开始
 --------
+
 .. code-block::python
 
     from simplelog import logger
 
     logger.info("this is test")
     logger.error("this is test")
+
 
 定制化logger
 ------------
@@ -43,13 +45,13 @@ Install and update using `pip`_ :
 
 
 结果如下:
-.. code:: bash
 
     [2020-03-06 22:53:57 WARNING/33060] test <input>:<module>:9 this is test
     [2020-03-06 22:53:57 INFO/33060] test <input>:<module>:10 this is test
     [2020-03-06 22:53:57 ERROR/33060] test <input>:<module>:11 this is test
     [2020-03-06 22:53:57 ERROR/33060] test <input>:<module>:12 this is test
     NoneType: None
+
 
 贡献
 ----
