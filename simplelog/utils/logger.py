@@ -2,11 +2,12 @@
 import logging
 from logging import basicConfig
 import os.path as p
+import os
 
 from concurrent_log_handler import ConcurrentRotatingFileHandler
 
 from simplelog.utils.defaults import default_log_fmt
-from simplelog.utils.defaults import default_filename, default_date_fmt
+from simplelog.utils.defaults import default_date_fmt
 
 basedir = p.dirname(p.dirname(p.abspath(__file__)))
 
@@ -33,7 +34,7 @@ class Logger:
         """
         self.name = name or 'simple_log'
         self.log_fmt = log_fmt if log_fmt is not None else default_log_fmt()
-        self.filename = filename or default_filename()
+        self.filename = filename
 
         self.date_fmt = date_fmt if date_fmt is not None else default_date_fmt()
         self.backup_count = backup_count
@@ -49,34 +50,42 @@ class Logger:
         log = logging.getLogger(self.name)
         formatter = logging.Formatter(self.log_fmt)
         # 定制handler ,maxBytes=1024 * 1024 * 100 = 100M
-        rotate_handler = ConcurrentRotatingFileHandler(filename=self.filename,
-                                                       backupCount=self.backup_count,
-                                                       maxBytes=self.max_bytes)
-        rotate_handler.setFormatter(formatter)
-        log.addHandler(rotate_handler)
+        if not self.filename:
+            # 如果没有filename 不做切割就可以了,
+            # 也不写入文件
+            pass
+        else:
+            # 判断这个文件是否存在
+            if not self.exists():
+                self.touch()
+
+            rotate_handler = ConcurrentRotatingFileHandler(filename=self.filename,
+                                                           backupCount=self.backup_count,
+                                                           maxBytes=self.max_bytes)
+            rotate_handler.setFormatter(formatter)
+            log.addHandler(rotate_handler)
         return log
+
+    def exists(self):
+        if p.exists(self.filename):
+            return True
+        else:
+            return False
+
+    def touch(self):
+        father_dir = p.dirname(self.filename)
+        print(f"father_dir: {father_dir}")
+        try:
+            os.makedirs(father_dir)
+        except FileExistsError as e:
+            print(f"file exists :{father_dir}"
+                  f"- e:{e}")
+        except FileNotFoundError as e:
+            print(f"father_dir not exist: {father_dir!r}"
+                  f"- e:{e}")
+
+        with open(self.filename, 'w'):
+            pass
 
     def __call__(self, *args, **kwargs):
         return self.get_logger()
-
-
-if __name__ == '__main__':
-    import time
-
-    filename = p.join(basedir, "log/app.log")
-
-    logger = Logger(name='simplelog',
-                    filename=filename,
-                    level=logging.DEBUG)
-
-    print(f"filename:{logger.filename}")
-
-    # log = logger.get_logger()
-
-    # for i in range(1000):
-    #     log.info("hello world")
-    #     log.error("hello world")
-    #     log.debug("hello world")
-    #     log.exception("hello world")
-    #     time.sleep(0.5)
-    # pass

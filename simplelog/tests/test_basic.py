@@ -4,7 +4,7 @@ import time
 import logging
 from simplelog import Logger
 
-logger = Logger(name='simplelog', level=logging.DEBUG)
+logger = Logger(name='simplelog', filename='app.log',level=logging.DEBUG)
 
 print(f"filename:{logger.filename}")
 
