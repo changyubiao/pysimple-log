@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 import io
 import re
 
@@ -16,10 +16,9 @@ setup(
     name="pysimple-log",
     license='Apache License 2.0',
     version=version,
-    packages=find_packages("simplelog"),
+    packages=find_namespace_packages(include=["simplelog.*", "simplelog"]),
     zip_safe=False,
     include_package_data=True,
-    package_dir={"": "simplelog"},
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/changyubiao/pysimple-log.git',
