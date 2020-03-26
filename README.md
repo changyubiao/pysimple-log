@@ -111,6 +111,56 @@ NoneType: None
 
 
 
+## 设置 日志级别 set_level 
+```python
+
+    import logging
+    from simplelog import Logger
+    from simplelog import set_level
+    # 实例化 Logger 对象
+    log = Logger(name='app',filename='app.log',level=logging.INFO)
+    
+    #获取 logger 对象
+    logger = log.get_logger()
+
+    logger.debug('hello world 1')
+    logger.info('hello world 2')
+    logger.warning('hello world 3')
+    logger.error('hello world 4')
+
+    set_level(name=log.name,level=logging.WARNING)
+    logger.debug('hello world 1')
+    logger.info('hello world 2')
+    logger.warning('hello world 3')
+    logger.error('hello world 4')
+
+    set_level(name=log.name,level=logging.ERROR)
+    logger.debug('hello world 1')
+    logger.info('hello world 2')
+    logger.warning('hello world 3')
+    logger.error('hello world 4')
+
+```
+
+
+
+## 捕获堆栈信息 设置 exc_info = True
+```python
+    
+    import logging
+    from simplelog import Logger
+    # 实例化 Logger 对象
+    log = Logger(name='app',filename='app.log',level=logging.INFO)
+
+    logger = log.get_logger()
+    # exc_info = True 
+    logger.error("This is error ",exc_info=True)
+```
+
+
+
+
+
 ## 贡献
 如果你对这个项目感兴趣，非常欢迎可以一起维护这个项目。
 如果你在使用的过程发现什么问题,可以联系我。
@@ -119,4 +169,4 @@ NoneType: None
 ## 链接 
 - [pypi 地址](https://pypi.org/project/pysimple-log/)
 - [pysimple-log github](https://github.com/changyubiao/pysimple-log)
-- 作者邮箱  frank.chang@lexisnexis.com
+- [作者邮箱]()  15769162764@163.com

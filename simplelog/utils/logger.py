@@ -25,13 +25,30 @@ class Logger:
                  level=logging.INFO
                  ):
         """
-        :param name: logger's name
-        :param filename:  文件路径 /aaa/bbb/file.log
-        :param log_fmt: 日志的格式
-        :param date_fmt: 日期的格式
-        :param backup_count: default:5,保留几份日志
-        :param max_bytes: default: 100M
-        :param level: logging.INFO ,logging.DEBUG ,...
+        :param name: logger's name  日志的名称，如果不指定 有默认值 simple_log
+
+        :param filename: 文件路径 '/aaa/bbb/file.log' ,日志文件的路径,如果没有提供这个值，
+                         则不写入文件，直接输出日志 到控制台。
+
+        :param log_fmt: 日志的格式 ,默认格式如下：
+         [日期 时间  日志级别/进程号] logger的名称 文件名称 函数名:行号 打印日志内容
+        [2020-03-09 18:02:21 INFO/39044] simplelog test_basic.py:<module>:14 hello world
+
+        :param date_fmt: 日期的格式 ,使用指定的时间格式，默认格式 '%Y-%m-%d %H:%M:%S'
+
+        :param backup_count: 对日志切割后 可以设置保留几份，默认保留5份
+
+        :param max_bytes: 超过 max_bytes 将会陪切割，默认值:100M, 单位是 字节
+
+        :param level: logging.INFO ,logging.DEBUG , 默认级别:INFO
+                       日志级别参考logging 模块
+                       CRITICAL = 50
+                       FATAL = CRITICAL
+                       ERROR = 40
+                       WARNING = 30
+                       WARN = WARNING
+                       INFO = 20
+                       DEBUG = 10
         """
         self._name = name or 'simple_log'
         self.log_fmt = log_fmt if log_fmt is not None else default_log_fmt()
@@ -112,7 +129,5 @@ def set_level(name: str = None, level: Union[int, str] = logging.INFO):
     :param level: 
     :return: None
     """
-    # print("set level beginning....")
     log = logging.getLogger(name or 'simple_log')
-
     log.setLevel(level=level)

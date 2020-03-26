@@ -23,7 +23,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/changyubiao/pysimple-log.git',
     author='frank',
-    author_email='frank.chang@lexisnexis.com',
+    author_email='15769162764@163.com',
     description='simple log configuration',
 
     project_urls={

@@ -30,11 +30,13 @@ from simplelog.utils.logger import set_level
 basedir = p.dirname(p.abspath(__file__))
 
 __author__ = 'Frank.chang'
-__author_email__ = 'frank.chang@lexisnexis.com'
+__author_email__ = '15769162764@163.com'
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 logger = Logger().get_logger()
+
+__all__ = (logger, Logger, set_level)
 
 if __name__ == '__main__':
     print(basedir)
