@@ -3,6 +3,7 @@ import logging
 from logging import basicConfig
 import os.path as p
 import os
+from typing import Union
 
 from concurrent_log_handler import ConcurrentRotatingFileHandler
 
@@ -32,7 +33,7 @@ class Logger:
         :param max_bytes: default: 100M
         :param level: logging.INFO ,logging.DEBUG ,...
         """
-        self.name = name or 'simple_log'
+        self._name = name or 'simple_log'
         self.log_fmt = log_fmt if log_fmt is not None else default_log_fmt()
         self.filename = filename
 
@@ -45,6 +46,7 @@ class Logger:
             datefmt=self.date_fmt,
             level=level,
         )
+        self._log = None
 
     def get_logger(self):
         log = logging.getLogger(self.name)
@@ -73,6 +75,10 @@ class Logger:
             return False
 
     def touch(self):
+        """
+        创建 日志文件路径
+        :return:
+        """
         father_dir = p.dirname(self.filename)
         print(f"father_dir: {father_dir}")
         try:
@@ -87,5 +93,26 @@ class Logger:
         with open(self.filename, 'w'):
             pass
 
+    @property
+    def name(self):
+        return self._name
+
     def __call__(self, *args, **kwargs):
         return self.get_logger()
+
+
+def set_level(name: str = None, level: Union[int, str] = logging.INFO):
+    """
+    Set the logging level of this logger.  level must be an int or a str.
+
+    level 的可选值
+    Union[ int, logging.INFO, logging.DEBUG, logging.ERROR, logging.WARNING]
+
+    :param name: Logger 的 name ,默认值 simple_log
+    :param level: 
+    :return: None
+    """
+    # print("set level beginning....")
+    log = logging.getLogger(name or 'simple_log')
+
+    log.setLevel(level=level)

@@ -24,6 +24,7 @@ Basic Usage:
 
 import os.path as p
 from simplelog.utils.logger import Logger
+from simplelog.utils.logger import set_level
 
 # basedir=simplelog
 basedir = p.dirname(p.abspath(__file__))
