@@ -158,6 +158,24 @@ NoneType: None
 ```
 
 
+## 输出json的格式的日志
+```python
+    import logging
+    from simplelog import Logger,JSONFormatter
+    # 实例化 Logger 对象
+    log = Logger(name='app',level=logging.INFO,json_formatter=JSONFormatter)
+
+    logger = log.get_logger()
+    logger.propagate = False
+
+    logger.info("hello world",extra={'key1':'hello world'})
+    logger.warning("hello world")
+    logger.exception("hello world")
+    logger.error("hello world")
+   ```
+
+
+
 
 
 
@@ -169,4 +187,4 @@ NoneType: None
 ## 链接 
 - [pypi 地址](https://pypi.org/project/pysimple-log/)
 - [pysimple-log github](https://github.com/changyubiao/pysimple-log)
-- [作者邮箱]()  15769162764@163.com
+- [作者邮箱](15769162764@163.com)  

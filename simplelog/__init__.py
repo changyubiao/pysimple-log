@@ -23,6 +23,8 @@ Basic Usage:
 """
 
 import os.path as p
+
+from simplelog.utils.json_log_formatter import JSONFormatter
 from simplelog.utils.logger import Logger
 from simplelog.utils.logger import set_level
 
@@ -35,8 +37,9 @@ __author_email__ = '15769162764@163.com'
 __version__ = '0.0.4'
 
 logger = Logger().get_logger()
+logger.propagate = False
 
-__all__ = (logger, Logger, set_level)
+__all__ = ['logger', 'Logger', 'set_level', 'JSONFormatter']
 
 if __name__ == '__main__':
     print(basedir)
