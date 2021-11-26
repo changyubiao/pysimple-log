@@ -34,7 +34,7 @@ basedir = p.dirname(p.abspath(__file__))
 __author__ = 'Frank.chang'
 __author_email__ = '15769162764@163.com'
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 logger = Logger().get_logger()
 logger.propagate = False
